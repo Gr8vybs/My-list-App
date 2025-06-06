@@ -2,6 +2,7 @@
   font-family: Avenir, Helvetica, Arial, sans-serif;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 body {
   background-color: black;
@@ -18,6 +19,12 @@ body {
   text-align: center;
   margin-bottom: 20px;
   color: white;
+}
+/* Base styles for post-wrapper */
+.post-wrapper {
+  width: 90vw;
+  margin: 10px auto;
+  display: block; /* Default for small screens: posts stack naturally */
 }
 .post-container {
   display: flex;
@@ -54,17 +61,18 @@ body {
 }
 
 @media screen and (min-width: 760px) {
-  .post-container {
-  display: flex;
-  flex-flow: row wrap;
-  width: 300px;
-  margin: 10px auto;
-}
-
-@media screen and (min-width: 1024px) {
-  .post-container {
-  display: flex;
-  flex-flow: row wrap;
-  width: 300px;
-  margin: 10px auto;
+  .post-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    width: 80vw;
+    max-width: 1200px; /* Added: Caps width for large screens */
+    margin: 10px auto;
+    gap: 20px; /* Added: Consistent spacing between posts */
+    justify-content: center; /* Added: Centers wrapped items */
   }
+  .post-container {
+    flex: 1 1 250px; /* Added: Flexible width, minimum 250px per post */
+    min-width: 200px; /* Added: Prevents posts from shrinking too much */
+    margin: 0; /* Adjusted: Relies on gap for spacing in flex */
+  }
+}
